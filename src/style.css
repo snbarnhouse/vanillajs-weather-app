@@ -29,3 +29,37 @@ li {
     margin: 30px auto;
 }
 
+.current-img {
+    position: relative;
+    top: 30px;
+}
+
+.current-weather strong {
+    font-size: 64px;
+    font-weight: 100;
+}
+
+.current-weather small {
+    position: relative;
+    top: -32px;
+}
+
+.current-condition {
+    position: relative;
+    top: -20px;
+    font-size: small;
+    left: 5px;
+}
+
+.current-information {
+    position: relative;
+    top: 25px;
+    font-size: small;
+}
+
+.current-information li strong {
+    font-size: 25px;
+    font-weight: lighter;
+    
+}
+
