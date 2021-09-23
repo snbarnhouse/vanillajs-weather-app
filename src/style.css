@@ -22,6 +22,9 @@ ul {
 li {
     list-style: none;
     color: gray;
+}
+
+li::first-letter {
     text-transform: capitalize;
 }
 
