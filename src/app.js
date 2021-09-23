@@ -2,11 +2,11 @@ function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
   if (hours < 10) {
-      hours = `0${hours}`
+    hours = `0${hours}`;
   }
   let minutes = date.getMinutes();
   if (minutes < 10) {
-      minutes = `0${minutes}`
+    minutes = `0${minutes}`;
   }
   let days = [
     "Sunday",
@@ -21,7 +21,6 @@ function formatDate(timestamp) {
   let month = date.getMonth();
 
   return `${day} ${hours}:${minutes}`;
-  
 }
 
 // function formatDay(date) {
@@ -32,7 +31,6 @@ function formatDate(timestamp) {
 // }
 
 function displayTemperature(response) {
-  console.log(response.data);
   let currentTemperature = document.querySelector("#current-temperature");
   currentTemperature.innerHTML = Math.round(response.data.main.temp);
   let city = document.querySelector("#city-name");
@@ -47,10 +45,17 @@ function displayTemperature(response) {
   feelsLike.innerHTML = Math.round(response.data.main.feels_like);
   let date = document.querySelector("#current-date");
   date.innerHTML = formatDate(response.data.dt * 1000);
-//   let currentDate = document.querySelector("#current-month");
-//   currentDate.innerHTML = formatDay;
+  let icon = document.querySelector("#weather-icon");
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  icon.setAttribute("alt", response.data.weather[0].description);
+  //   let currentDate = document.querySelector("#current-month");
+  //   currentDate.innerHTML = formatDay;
 }
 let apiKey = "1743d71cea491649f0bd96f06af46d71";
 let city = "Raleigh";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+let units = "imperial";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
 axios.get(apiUrl).then(displayTemperature);

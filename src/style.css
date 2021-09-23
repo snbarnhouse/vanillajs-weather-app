@@ -67,3 +67,8 @@ li::first-letter {
     
 }
 
+.current-img {
+    position: relative;
+    left: -20px;
+    top: 20px;
+}
