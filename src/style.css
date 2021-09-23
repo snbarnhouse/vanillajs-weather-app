@@ -22,6 +22,7 @@ ul {
 li {
     list-style: none;
     color: gray;
+    text-transform: capitalize;
 }
 
 .weather-app-container {

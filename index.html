@@ -11,6 +11,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="src/style.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="container">
@@ -23,16 +24,17 @@
       </div>
         <div class="col-5 current-weather">
               <ul>
-            <li><strong>73</strong><small>°F/°C</small></li>
+            <li><strong id= "current-temperature"></strong><small>°F/°C</small></li>
             <span class= "current-condition">
-            <li>Cloudy</li>
-            <li>82°F/53°F</li>
+            <li id= "weather-description"></li>
+            <li>Feels Like <span id= "real-feel">63</span>°F</li>
+            <li><span id = "high-temp">82</span>°F/<span id= "low-temp">53</span>°F</li>
               </span>
           </ul>
         </div>
         <div class="col-5">
             <ul class= "current-information">
-                <li><strong>Raleigh</strong></li>
+                <li><strong id= "city-name">Raleigh</strong></li>
                 <li>9/22/2021</li>
                 <li>1:44PM</li>
             </ul>
