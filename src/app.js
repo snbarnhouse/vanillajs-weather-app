@@ -67,8 +67,23 @@ function handleSubmit(event) {
   event.preventDefault();
   let city = document.querySelector("#city-input");
   search(city.value);
-  console.log(city.value);
 }
 search("Raleigh");
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+//Get Current Location
+function showPosition(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let apiKey = "1743d71cea491649f0bd96f06af46d71";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
+  axios.get(`${apiUrl}&appid=${apiKey}`).then(displayTemperature);
+  console.log(position);
+}
+function getCurrentPosition() {
+  navigator.geolocation.getCurrentPosition(showPosition);
+}
+
+let button = document.querySelector("#button");
+button.addEventListener("click", getCurrentPosition);
