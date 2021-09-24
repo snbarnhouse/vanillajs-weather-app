@@ -31,6 +31,7 @@ function formatDate(timestamp) {
 // }
 
 function displayTemperature(response) {
+    console.log(response.data);
   let currentTemperature = document.querySelector("#current-temperature");
   currentTemperature.innerHTML = Math.round(response.data.main.temp);
   let city = document.querySelector("#city-name");
@@ -43,6 +44,8 @@ function displayTemperature(response) {
   lowTemp.innerHTML = Math.round(response.data.main.temp_min);
   let feelsLike = document.querySelector("#real-feel");
   feelsLike.innerHTML = Math.round(response.data.main.feels_like);
+  let windSpeed = document.querySelector("#wind-speed");
+  windSpeed.innerHTML = Math.round(response.data.wind.speed);
   let date = document.querySelector("#current-date");
   date.innerHTML = formatDate(response.data.dt * 1000);
   let icon = document.querySelector("#weather-icon");
@@ -51,6 +54,7 @@ function displayTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   icon.setAttribute("alt", response.data.weather[0].description);
+  console.log(windSpeed);
   //   let currentDate = document.querySelector("#current-month");
   //   currentDate.innerHTML = formatDay;
 }
@@ -72,7 +76,7 @@ search("Raleigh");
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
-//Get Current Location
+//Get Current Location button functionality
 function showPosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
