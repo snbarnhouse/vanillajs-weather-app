@@ -54,7 +54,10 @@ function displayTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   icon.setAttribute("alt", response.data.weather[0].description);
-  console.log(windSpeed);
+  fahrenheitFeelsLike = response.data.main.feels_like;
+  fahrenheitTemperature = response.data.main.temp;
+  fahrenheitHigh = response.data.main.temp_max;
+  fahrenheitLow = response.data.main.temp_min;
   //   let currentDate = document.querySelector("#current-month");
   //   currentDate.innerHTML = formatDay;
 }
@@ -72,7 +75,7 @@ function handleSubmit(event) {
   let city = document.querySelector("#city-input");
   search(city.value);
 }
-search("Raleigh");
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
@@ -91,3 +94,46 @@ function getCurrentPosition() {
 
 let button = document.querySelector("#button");
 button.addEventListener("click", getCurrentPosition);
+
+//Convert to celsius
+function convertToCelsius(event) {
+  event.preventDefault();
+  let celsiusTemperature = (fahrenheitTemperature - 32) * 5/9;
+  let currentTemperature = document.querySelector("#current-temperature");
+  currentTemperature.innerHTML = Math.round(celsiusTemperature);
+  let celsiusFeelsLike = (fahrenheitFeelsLike - 32) * 5/9;
+  let celsiusFeelsLikeTemp = document.querySelector("#real-feel");
+  celsiusFeelsLikeTemp.innerHTML = Math.round(celsiusFeelsLike);
+  let celsiusHigh = (fahrenheitHigh - 32) * 5/9;
+  let celsiusHighTemp = document.querySelector("#high-temp");
+  celsiusHighTemp.innerHTML = Math.round(celsiusHigh);
+  let celsiusLow = (fahrenheitLow - 32) * 5 / 9;
+  let celsiusLowTemp = document.querySelector("#low-temp");
+  celsiusLowTemp.innerHTML = Math.round(celsiusLow);
+}
+
+
+let fahrenheitTemperature = null;
+let fahrenheitFeelsLike = null;
+let fahrenheitHigh = null;
+let fahrenheitLow = null;
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", convertToCelsius);
+
+function convertToFahrenheit(event) {
+    event.preventDefault();
+    let currentTemperature = document.querySelector("#current-temperature");
+    currentTemperature.innerHTML = Math.round(fahrenheitTemperature);
+    let feelsLikeTemp= document.querySelector("#real-feel");
+    feelsLikeTemp.innerHTML = Math.round(fahrenheitFeelsLike);
+    let highTemp= document.querySelector("#high-temp");
+    highTemp.innerHTML= Math.round(fahrenheitHigh);
+    let lowTemp= document.querySelector("#low-temp");
+    lowTemp.innerHTML = Math.round(fahrenheitLow);
+}
+
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", convertToFahrenheit);
+
+search("Raleigh");
