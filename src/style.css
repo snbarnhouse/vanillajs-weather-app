@@ -72,3 +72,13 @@ li::first-letter {
     left: -20px;
     top: 20px;
 }
+
+.btn-success {
+    position: relative;
+    top: 5px;
+}
+
+.current {
+    position: relative;
+    margin-bottom: -30px;
+}

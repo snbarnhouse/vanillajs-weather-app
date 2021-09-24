@@ -17,6 +17,18 @@
     <div class="container">
         <div class= "weather-app-container">
             <div class= "weather-app">
+              <form id= "search-form">
+              <div class="row">
+                <div class= "col-8">
+                  <input type = "search" placeholder="Search" class = "form-control" id= "city-input" autocomplete="off" />
+              </div>
+              <div class = "col-4">
+                <input type = "submit" value= "Search" class= "btn btn-primary">
+                <div class = "col-4">
+                <input type = "submit" value= "Current Location" class= "btn btn-success">
+              </div>
+              </div>
+              </form>
       <h1>Current Weather</h1>
       <div class="row">
           <div class= "col-2">
@@ -28,7 +40,7 @@
             <span class= "current-condition">
             <li id= "weather-description"></li>
             <li>Feels like <span id= "real-feel"></span>°F</li>
-            <li><span id = "high-temp"></span>°F/<span id= "low-temp"></span>°F</li>
+            <li class= "current"><span id = "high-temp"></span>°F/<span id= "low-temp"></span>°F</li>
               </span>
           </ul>
         </div>
@@ -41,6 +53,7 @@
         </div>
       </div>
     </div>
+    </div>
     <small>
       <a
         href="https://github.com/snbarnhouse/vanillajs-weather-app"
@@ -49,7 +62,6 @@
       >
       by Stephanie Barnhouse
     </small>
-    </div>
     </div>
 </div>
     <script src="src/app.js"></script>

@@ -54,8 +54,21 @@ function displayTemperature(response) {
   //   let currentDate = document.querySelector("#current-month");
   //   currentDate.innerHTML = formatDay;
 }
-let apiKey = "1743d71cea491649f0bd96f06af46d71";
-let city = "Raleigh";
-let units = "imperial";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-axios.get(apiUrl).then(displayTemperature);
+
+
+function search(city) {
+  let apiKey = "1743d71cea491649f0bd96f06af46d71";
+  let units = "imperial";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let city = document.querySelector("#city-input");
+  search(city.value);
+  console.log(city.value);
+}
+search("Raleigh");
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
