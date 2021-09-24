@@ -1,84 +1,94 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .weather-app {
-    border: 1px solid gray;
-    margin: 40px auto;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 5px;
+  border: 1px solid gray;
+  margin: 40px auto;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 5px;
 }
 
 h1 {
-    color:gray;
+  color: gray;
 }
 
 ul {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 li {
-    list-style: none;
-    color: gray;
+  list-style: none;
+  color: gray;
 }
 
 li::first-letter {
-    text-transform: capitalize;
+  text-transform: capitalize;
 }
 
 .weather-app-container {
-    max-width: 600px;
-    margin: 30px auto;
+  max-width: 600px;
+  margin: 30px auto;
 }
 
 .current-img {
-    position: relative;
-    top: 30px;
+  position: relative;
+  top: 30px;
 }
 
 .current-weather strong {
-    font-size: 64px;
-    font-weight: 100;
+  font-size: 64px;
+  font-weight: 100;
 }
 
 .current-weather small {
-    position: relative;
-    top: -32px;
+  position: relative;
+  top: -32px;
 }
 
 .current-condition {
-    position: relative;
-    top: -20px;
-    font-size: small;
-    left: 5px;
+  position: relative;
+  top: -20px;
+  font-size: small;
+  left: 5px;
 }
 
 .current-information {
-    position: relative;
-    top: 25px;
-    font-size: small;
+  position: relative;
+  top: 25px;
+  font-size: small;
 }
 
 .current-information li strong {
-    font-size: 25px;
-    font-weight: lighter;
-    
+  font-size: 25px;
+  font-weight: lighter;
 }
 
 .current-img {
-    position: relative;
-    left: -20px;
-    top: 20px;
+  position: relative;
+  left: -20px;
+  top: 20px;
 }
 
 .btn-success {
-    position: relative;
-    top: 5px;
+  position: relative;
+  top: 5px;
 }
 
 .current {
-    position: relative;
-    margin-bottom: -30px;
+  position: relative;
+  margin-bottom: -30px;
+}
+
+.active {
+  color: gray;
+  cursor: default;
+  text-decoration: none;
+}
+
+.active:hover {
+  text-decoration: none;
+  color: gray;
 }

@@ -31,7 +31,7 @@ function formatDate(timestamp) {
 // }
 
 function displayTemperature(response) {
-    console.log(response.data);
+  console.log(response.data);
   let currentTemperature = document.querySelector("#current-temperature");
   currentTemperature.innerHTML = Math.round(response.data.main.temp);
   let city = document.querySelector("#city-name");
@@ -61,7 +61,6 @@ function displayTemperature(response) {
   //   let currentDate = document.querySelector("#current-month");
   //   currentDate.innerHTML = formatDay;
 }
-
 
 function search(city) {
   let apiKey = "1743d71cea491649f0bd96f06af46d71";
@@ -98,20 +97,23 @@ button.addEventListener("click", getCurrentPosition);
 //Convert to celsius
 function convertToCelsius(event) {
   event.preventDefault();
-  let celsiusTemperature = (fahrenheitTemperature - 32) * 5/9;
+  let celsiusTemperature = ((fahrenheitTemperature - 32) * 5) / 9;
   let currentTemperature = document.querySelector("#current-temperature");
+
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+
   currentTemperature.innerHTML = Math.round(celsiusTemperature);
-  let celsiusFeelsLike = (fahrenheitFeelsLike - 32) * 5/9;
+  let celsiusFeelsLike = ((fahrenheitFeelsLike - 32) * 5) / 9;
   let celsiusFeelsLikeTemp = document.querySelector("#real-feel");
   celsiusFeelsLikeTemp.innerHTML = Math.round(celsiusFeelsLike);
-  let celsiusHigh = (fahrenheitHigh - 32) * 5/9;
+  let celsiusHigh = ((fahrenheitHigh - 32) * 5) / 9;
   let celsiusHighTemp = document.querySelector("#high-temp");
   celsiusHighTemp.innerHTML = Math.round(celsiusHigh);
-  let celsiusLow = (fahrenheitLow - 32) * 5 / 9;
+  let celsiusLow = ((fahrenheitLow - 32) * 5) / 9;
   let celsiusLowTemp = document.querySelector("#low-temp");
   celsiusLowTemp.innerHTML = Math.round(celsiusLow);
 }
-
 
 let fahrenheitTemperature = null;
 let fahrenheitFeelsLike = null;
@@ -121,17 +123,18 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
 
 function convertToFahrenheit(event) {
-    event.preventDefault();
-    let currentTemperature = document.querySelector("#current-temperature");
-    currentTemperature.innerHTML = Math.round(fahrenheitTemperature);
-    let feelsLikeTemp= document.querySelector("#real-feel");
-    feelsLikeTemp.innerHTML = Math.round(fahrenheitFeelsLike);
-    let highTemp= document.querySelector("#high-temp");
-    highTemp.innerHTML= Math.round(fahrenheitHigh);
-    let lowTemp= document.querySelector("#low-temp");
-    lowTemp.innerHTML = Math.round(fahrenheitLow);
+  event.preventDefault();
+  let currentTemperature = document.querySelector("#current-temperature");
+  fahrenheitLink.classList.add("active");
+  celsiusLink.classList.remove("active");
+  currentTemperature.innerHTML = Math.round(fahrenheitTemperature);
+  let feelsLikeTemp = document.querySelector("#real-feel");
+  feelsLikeTemp.innerHTML = Math.round(fahrenheitFeelsLike);
+  let highTemp = document.querySelector("#high-temp");
+  highTemp.innerHTML = Math.round(fahrenheitHigh);
+  let lowTemp = document.querySelector("#low-temp");
+  lowTemp.innerHTML = Math.round(fahrenheitLow);
 }
-
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", convertToFahrenheit);
