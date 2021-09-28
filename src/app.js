@@ -30,8 +30,18 @@ function formatDate(timestamp) {
 //     return `${month}`;
 // }
 
+//Get future forecast
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "1743d71cea491649f0bd96f06af46d71";
+  let units = "imperial";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${units}`;
+
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function displayTemperature(response) {
-  console.log(response.data);
+  // console.log(response.data);
   let currentTemperature = document.querySelector("#current-temperature");
   currentTemperature.innerHTML = Math.round(response.data.main.temp);
   let city = document.querySelector("#city-name");
@@ -58,6 +68,8 @@ function displayTemperature(response) {
   fahrenheitTemperature = response.data.main.temp;
   fahrenheitHigh = response.data.main.temp_max;
   fahrenheitLow = response.data.main.temp_min;
+
+  getForecast(response.data.coord);
 
   //   let currentDate = document.querySelector("#current-month");
   //   currentDate.innerHTML = formatDay;
@@ -143,7 +155,8 @@ fahrenheitLink.addEventListener("click", convertToFahrenheit);
 search("Raleigh");
 
 //future forecast
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#future-forecast");
 
   let days = ["Mon", "Tues", "Wed", "Thur", "Fri"];
@@ -168,5 +181,3 @@ function displayForecast() {
   forecastHTML = forecastHTML + `</div`;
   forecastElement.innerHTML = forecastHTML;
 }
-
-displayForecast();
