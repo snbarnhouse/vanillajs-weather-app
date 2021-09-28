@@ -58,6 +58,7 @@ function displayTemperature(response) {
   fahrenheitTemperature = response.data.main.temp;
   fahrenheitHigh = response.data.main.temp_max;
   fahrenheitLow = response.data.main.temp_min;
+
   //   let currentDate = document.querySelector("#current-month");
   //   currentDate.innerHTML = formatDay;
 }
@@ -140,3 +141,32 @@ let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", convertToFahrenheit);
 
 search("Raleigh");
+
+//future forecast
+function displayForecast() {
+  let forecastElement = document.querySelector("#future-forecast");
+
+  let days = ["Mon", "Tues", "Wed", "Thur", "Fri"];
+  let forecastHTML = `<div class= "row">`;
+  //looping through each day of days array
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+        <div class="col-2">
+          <div class="weather-forecast-date">
+          ${day}
+          </div>
+          <img src= "http://openweathermap.org/img/wn/02n@2x.png" width= "40" />
+          <div class="weather-forecast-temperature">
+            <span class= "weather-forecast-max">18</span>°/
+          <span class = "weathe-forecast-min">12</span>°
+            </div>
+        </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+displayForecast();
