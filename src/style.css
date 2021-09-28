@@ -92,3 +92,17 @@ li::first-letter {
   text-decoration: none;
   color: gray;
 }
+
+.weather-forecast {
+  margin-top: 30px;
+  color: gray;
+  text-align: center;
+}
+
+.weather-forecast-temperature {
+  font-size: small;
+}
+
+.weather-forecast-max {
+  font-weight: bolder;
+}
