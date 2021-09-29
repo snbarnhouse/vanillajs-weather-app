@@ -156,28 +156,37 @@ search("Raleigh");
 
 //future forecast
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#future-forecast");
 
-  let days = ["Mon", "Tues", "Wed", "Thur", "Fri"];
+  
   let forecastHTML = `<div class= "row">`;
   //looping through each day of days array
-  days.forEach(function (day) {
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
     forecastHTML =
       forecastHTML +
       `
         <div class="col-2">
           <div class="weather-forecast-date">
-          ${day}
+          ${formatDay(forecastDay.dt)}
           </div>
-          <img src= "http://openweathermap.org/img/wn/02n@2x.png" width= "40" />
+          <img src= "http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" width= "40" />
           <div class="weather-forecast-temperature">
-            <span class= "weather-forecast-max">18</span>°/
-          <span class = "weathe-forecast-min">12</span>°
+            <span class= "weather-forecast-max">${Math.round(forecastDay.temp.max)}</span>°/
+          <span class = "weathe-forecast-min">${Math.round(forecastDay.temp.min)}</span>°
             </div>
         </div>`;
+    }
   });
 
   forecastHTML = forecastHTML + `</div`;
   forecastElement.innerHTML = forecastHTML;
+}
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day= date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
 }
