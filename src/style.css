@@ -78,9 +78,8 @@ li::first-letter {
   top: 5px;
 }
 
-.current {
-  position: relative;
-  margin-bottom: -30px;
+.feels-like {
+  margin-bottom: -15px;
 }
 
 .active {

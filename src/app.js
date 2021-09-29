@@ -18,21 +18,13 @@ function formatDate(timestamp) {
     "Saturday",
   ];
   let day = days[date.getDay()];
-  let month = date.getMonth();
 
   return `${day} ${hours}:${minutes}`;
 }
 
-// function formatDay(date) {
-//     let now = new Date();
-//     let month = now.getMonth();
-//     console.log(now.getMonth());
-//     return `${month}`;
-// }
 
 //Get future forecast
 function getForecast(coordinates) {
-  console.log(coordinates);
   let apiKey = "1743d71cea491649f0bd96f06af46d71";
   let units = "imperial";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${units}`;
@@ -41,17 +33,13 @@ function getForecast(coordinates) {
 }
 
 function displayTemperature(response) {
-  // console.log(response.data);
+  console.log(response.data);
   let currentTemperature = document.querySelector("#current-temperature");
   currentTemperature.innerHTML = Math.round(response.data.main.temp);
   let city = document.querySelector("#city-name");
   city.innerHTML = response.data.name;
   let description = document.querySelector("#weather-description");
   description.innerHTML = response.data.weather[0].description;
-  let highTemp = document.querySelector("#high-temp");
-  highTemp.innerHTML = Math.round(response.data.main.temp_max);
-  let lowTemp = document.querySelector("#low-temp");
-  lowTemp.innerHTML = Math.round(response.data.main.temp_min);
   let feelsLike = document.querySelector("#real-feel");
   feelsLike.innerHTML = Math.round(response.data.main.feels_like);
   let windSpeed = document.querySelector("#wind-speed");
@@ -66,13 +54,9 @@ function displayTemperature(response) {
   icon.setAttribute("alt", response.data.weather[0].description);
   fahrenheitFeelsLike = response.data.main.feels_like;
   fahrenheitTemperature = response.data.main.temp;
-  fahrenheitHigh = response.data.main.temp_max;
-  fahrenheitLow = response.data.main.temp_min;
 
   getForecast(response.data.coord);
 
-  //   let currentDate = document.querySelector("#current-month");
-  //   currentDate.innerHTML = formatDay;
 }
 
 function search(city) {
@@ -98,7 +82,6 @@ function showPosition(position) {
   let apiKey = "1743d71cea491649f0bd96f06af46d71";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
   axios.get(`${apiUrl}&appid=${apiKey}`).then(displayTemperature);
-  console.log(position);
 }
 function getCurrentPosition() {
   navigator.geolocation.getCurrentPosition(showPosition);
@@ -143,10 +126,6 @@ function convertToFahrenheit(event) {
   currentTemperature.innerHTML = Math.round(fahrenheitTemperature);
   let feelsLikeTemp = document.querySelector("#real-feel");
   feelsLikeTemp.innerHTML = Math.round(fahrenheitFeelsLike);
-  let highTemp = document.querySelector("#high-temp");
-  highTemp.innerHTML = Math.round(fahrenheitHigh);
-  let lowTemp = document.querySelector("#low-temp");
-  lowTemp.innerHTML = Math.round(fahrenheitLow);
 }
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
@@ -154,14 +133,15 @@ fahrenheitLink.addEventListener("click", convertToFahrenheit);
 
 search("Raleigh");
 
-//future forecast
+//Future forecast
 function displayForecast(response) {
+  console.log(response.data.daily);
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#future-forecast");
 
   
   let forecastHTML = `<div class= "row">`;
-  //looping through each day of days array
+  //Looping through each day of days array
   forecast.forEach(function (forecastDay, index) {
     if (index < 5) {
     forecastHTML =
