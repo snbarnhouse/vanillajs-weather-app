@@ -163,7 +163,7 @@ function displayForecast(response) {
   let forecastHTML = `<div class= "row">`;
   //looping through each day of days array
   forecast.forEach(function (forecastDay, index) {
-    if (index < 6) {
+    if (index < 5) {
     forecastHTML =
       forecastHTML +
       `
