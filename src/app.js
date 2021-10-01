@@ -3,6 +3,11 @@ function formatDate(timestamp) {
   let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
+  } 
+  else if (hours > 12) {
+    hours -= 12;
+  } else if (hours === 0) {
+    hours = 12;
   }
   let minutes = date.getMinutes();
   if (minutes < 10) {
@@ -33,7 +38,6 @@ function getForecast(coordinates) {
 }
 
 function displayTemperature(response) {
-  console.log(response.data);
   let currentTemperature = document.querySelector("#current-temperature");
   currentTemperature.innerHTML = Math.round(response.data.main.temp);
   let city = document.querySelector("#city-name");
@@ -90,52 +94,16 @@ function getCurrentPosition() {
 let button = document.querySelector("#button");
 button.addEventListener("click", getCurrentPosition);
 
-//Convert to celsius
-function convertToCelsius(event) {
-  event.preventDefault();
-  let celsiusTemperature = ((fahrenheitTemperature - 32) * 5) / 9;
-  let currentTemperature = document.querySelector("#current-temperature");
-
-  fahrenheitLink.classList.remove("active");
-  celsiusLink.classList.add("active");
-
-  currentTemperature.innerHTML = Math.round(celsiusTemperature);
-  let celsiusFeelsLike = ((fahrenheitFeelsLike - 32) * 5) / 9;
-  let celsiusFeelsLikeTemp = document.querySelector("#real-feel");
-  celsiusFeelsLikeTemp.innerHTML = Math.round(celsiusFeelsLike);
-  let celsiusHigh = ((fahrenheitHigh - 32) * 5) / 9;
-  let celsiusHighTemp = document.querySelector("#high-temp");
-  celsiusHighTemp.innerHTML = Math.round(celsiusHigh);
-  let celsiusLow = ((fahrenheitLow - 32) * 5) / 9;
-  let celsiusLowTemp = document.querySelector("#low-temp");
-  celsiusLowTemp.innerHTML = Math.round(celsiusLow);
-}
 
 let fahrenheitTemperature = null;
 let fahrenheitFeelsLike = null;
 let fahrenheitHigh = null;
 let fahrenheitLow = null;
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", convertToCelsius);
-
-function convertToFahrenheit(event) {
-  event.preventDefault();
-  let currentTemperature = document.querySelector("#current-temperature");
-  fahrenheitLink.classList.add("active");
-  celsiusLink.classList.remove("active");
-  currentTemperature.innerHTML = Math.round(fahrenheitTemperature);
-  let feelsLikeTemp = document.querySelector("#real-feel");
-  feelsLikeTemp.innerHTML = Math.round(fahrenheitFeelsLike);
-}
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", convertToFahrenheit);
 
 search("Raleigh");
 
 //Future forecast
 function displayForecast(response) {
-  console.log(response.data.daily);
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#future-forecast");
 

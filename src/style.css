@@ -82,17 +82,6 @@ li::first-letter {
   margin-bottom: -15px;
 }
 
-.active {
-  color: gray;
-  cursor: default;
-  text-decoration: none;
-}
-
-.active:hover {
-  text-decoration: none;
-  color: gray;
-}
-
 .weather-forecast {
   margin-top: 30px;
   color: gray;
