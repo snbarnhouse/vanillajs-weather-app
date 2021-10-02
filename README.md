@@ -2,7 +2,7 @@
 
 Weather App made using vanilla js, bootstrap, HTML, CSS, openweather API, and hosted on Netlify.
 
+GitHub Repo: https://github.com/snbarnhouse/vanillajs-weather-app 
+Deployed: https://festive-euler-94d8f4.netlify.app 
 
-https://festive-euler-94d8f4.netlify.app 
-
-![weather_app](https://user-images.githubusercontent.com/77131387/135697315-a7aabd45-888f-4574-9d48-df0f0cedfc0f.png)
+![weather_app](https://user-images.githubusercontent.com/77131387/135697402-77bd4f4c-e519-4b00-8395-65b26679ed23.png)
