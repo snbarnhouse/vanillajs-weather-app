@@ -2,7 +2,7 @@
 
 ## Description/Features
 
-A weather app that provides the user with the current temperature, location, and a 5 day forecast for the city searched. The user also has the ability to search the weather for their current location.
+A weather app that provides the user with the current temperature, weather description, location, and a 5 day forecast for the city searched. The user also has the ability to search the weather for their current location.
 
 ## Tech Stack
 
