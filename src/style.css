@@ -18,7 +18,7 @@ li {
 }
 
 /* Capitalize first letter */
-li::first-letter {
+li:first-letter {
   text-transform: capitalize;
 }
 

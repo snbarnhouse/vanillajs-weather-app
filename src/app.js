@@ -36,6 +36,7 @@ function getForecast(coordinates) {
   axios.get(apiUrl).then(displayForecast);
 }
 
+//Display current weather
 function displayTemperature(response) {
   let currentTemperature = document.querySelector("#current-temperature");
   currentTemperature.innerHTML = Math.round(response.data.main.temp);
@@ -77,7 +78,7 @@ function handleSubmit(event) {
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
-//Get Current Location button functionality
+//Get current location button functionality
 function showPosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
@@ -92,10 +93,6 @@ function getCurrentPosition() {
 let button = document.querySelector("#button");
 button.addEventListener("click", getCurrentPosition);
 
-let fahrenheitTemperature = null;
-let fahrenheitFeelsLike = null;
-let fahrenheitHigh = null;
-let fahrenheitLow = null;
 
 //Initially load page with Raleigh weather
 search("Raleigh");
@@ -136,6 +133,7 @@ function displayForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 
+//Format day of the week
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
