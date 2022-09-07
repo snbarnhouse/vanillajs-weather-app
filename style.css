@@ -1,0 +1,101 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Elements */
+h1 {
+  color: gray;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+  color: gray;
+}
+
+/* Capitalize first letter */
+li::first-letter {
+  text-transform: capitalize;
+}
+
+/* Classes */
+.weather-app {
+  border: 1px solid gray;
+  margin: 40px auto;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 5px;
+  background-color: lightblue;
+}
+
+.weather-app-container {
+  max-width: 600px;
+  margin: 30px auto;
+}
+
+.current-img {
+  position: relative;
+  top: 30px;
+}
+
+.current-weather strong {
+  font-size: 64px;
+  font-weight: 100;
+}
+
+.current-weather small {
+  position: relative;
+  top: -32px;
+}
+
+.current-condition {
+  position: relative;
+  top: -20px;
+  font-size: small;
+  left: 5px;
+}
+
+.current-information {
+  position: relative;
+  top: 25px;
+  font-size: small;
+}
+
+.current-information li strong {
+  font-size: 25px;
+  font-weight: lighter;
+}
+
+.current-img {
+  position: relative;
+  left: -20px;
+  top: 20px;
+}
+
+.btn-success {
+  position: relative;
+  top: 5px;
+}
+
+.feels-like {
+  margin-bottom: -15px;
+}
+
+.weather-forecast {
+  margin-top: 30px;
+  color: gray;
+  text-align: center;
+  padding-left: 45px;
+}
+
+.weather-forecast-temperature {
+  font-size: small;
+}
+
+.weather-forecast-max {
+  font-weight: bolder;
+}
