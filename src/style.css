@@ -2,15 +2,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.weather-app {
-  border: 1px solid gray;
-  margin: 40px auto;
-  border-radius: 10px;
-  padding: 20px;
-  margin-bottom: 5px;
-  background-color: lightblue;
-}
-
+/* Elements */
 h1 {
   color: gray;
 }
@@ -25,8 +17,19 @@ li {
   color: gray;
 }
 
+/* Capitalize first letter */
 li::first-letter {
   text-transform: capitalize;
+}
+
+/* Classes */
+.weather-app {
+  border: 1px solid gray;
+  margin: 40px auto;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 5px;
+  background-color: lightblue;
 }
 
 .weather-app-container {

@@ -1,10 +1,10 @@
+//Formatting the date
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
-  } 
-  else if (hours > 12) {
+  } else if (hours > 12) {
     hours -= 12;
   } else if (hours === 0) {
     hours = 12;
@@ -26,7 +26,6 @@ function formatDate(timestamp) {
 
   return `${day} ${hours}:${minutes}`;
 }
-
 
 //Get future forecast
 function getForecast(coordinates) {
@@ -60,7 +59,6 @@ function displayTemperature(response) {
   fahrenheitTemperature = response.data.main.temp;
 
   getForecast(response.data.coord);
-
 }
 
 function search(city) {
@@ -94,12 +92,12 @@ function getCurrentPosition() {
 let button = document.querySelector("#button");
 button.addEventListener("click", getCurrentPosition);
 
-
 let fahrenheitTemperature = null;
 let fahrenheitFeelsLike = null;
 let fahrenheitHigh = null;
 let fahrenheitLow = null;
 
+//Initially load page with Raleigh weather
 search("Raleigh");
 
 //Future forecast
@@ -107,22 +105,28 @@ function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#future-forecast");
 
-  
   let forecastHTML = `<div class= "row">`;
+  
   //Looping through each day of days array
   forecast.forEach(function (forecastDay, index) {
     if (index < 5) {
-    forecastHTML =
-      forecastHTML +
-      `
+      forecastHTML =
+        forecastHTML +
+        `
         <div class="col-2">
           <div class="weather-forecast-date">
           ${formatDay(forecastDay.dt)}
           </div>
-          <img src= "http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" width= "40" />
+          <img src= "http://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png" width= "40" />
           <div class="weather-forecast-temperature">
-            <span class= "weather-forecast-max">${Math.round(forecastDay.temp.max)}</span>°/
-          <span class = "weathe-forecast-min">${Math.round(forecastDay.temp.min)}</span>°
+            <span class= "weather-forecast-max">${Math.round(
+              forecastDay.temp.max
+            )}</span>°/
+          <span class = "weathe-forecast-min">${Math.round(
+            forecastDay.temp.min
+          )}</span>°
             </div>
         </div>`;
     }
@@ -134,7 +138,7 @@ function displayForecast(response) {
 
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
-  let day= date.getDay();
+  let day = date.getDay();
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   return days[day];
 }
