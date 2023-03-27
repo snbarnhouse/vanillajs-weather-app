@@ -12,6 +12,6 @@ This app was made using HTML, CSS, Bootstrap, JavaScript, and the OpenWeather AP
 
 GitHub Repository: https://github.com/snbarnhouse/vanillajs-weather-app 
 
-Deployed:  https://festive-euler-94d8f4.netlify.app
+Deployed:  https://github.com/snbarnhouse/vanillajs-weather-app.git
 
 ![Weather App](/src/Screenshot-weather.png?raw=true "Weather App")
